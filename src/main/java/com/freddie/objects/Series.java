@@ -7,10 +7,6 @@ import java.util.TreeMap;
 
 public class Series implements Serializable
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1655972251189671476L;
 
 	private String id;
@@ -44,9 +40,9 @@ public class Series implements Serializable
 		setData(observations);
 	}
 
-	public Series(String id, String title, List<Observation> data, String seasonalAdjustment, String seasonalAdjustmentShort,
-			String frequency, String frequencyShort, String units, String unitsShort, Date realtimeStart, Date realtimeEnd,
-			Date observationStart, Date observationEnd, Date lastUpdated, Integer popularity, String notes)
+	public Series(String id, String title, List<Observation> data, String seasonalAdjustment, String seasonalAdjustmentShort, String frequency,
+			String frequencyShort, String units, String unitsShort, Date realtimeStart, Date realtimeEnd, Date observationStart, Date observationEnd,
+			Date lastUpdated, Integer popularity, String notes)
 	{
 		super();
 		this.id = id;
@@ -235,6 +231,19 @@ public class Series implements Serializable
 	public void setNotes(String notes)
 	{
 		this.notes = notes;
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("Series [id=").append(id).append(", title=").append(title).append(", data=").append(data).append(", seasonalAdjustment=")
+				.append(seasonalAdjustment).append(", seasonalAdjustmentShort=").append(seasonalAdjustmentShort).append(", frequency=").append(frequency)
+				.append(", frequencyShort=").append(frequencyShort).append(", units=").append(units).append(", unitsShort=").append(unitsShort)
+				.append(", realtimeStart=").append(realtimeStart).append(", realtimeEnd=").append(realtimeEnd).append(", observationStart=")
+				.append(observationStart).append(", observationEnd=").append(observationEnd).append(", lastUpdated=").append(lastUpdated)
+				.append(", popularity=").append(popularity).append(", notes=").append(notes).append("]");
+		return builder.toString();
 	}
 
 }

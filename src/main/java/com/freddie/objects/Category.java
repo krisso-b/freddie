@@ -4,11 +4,8 @@ import java.io.Serializable;
 
 public class Category implements Serializable
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1868282763564612632L;
+
 	private int id;
 	private String name;
 	private int parentId;
@@ -52,6 +49,14 @@ public class Category implements Serializable
 	public void setParentId(int parentId)
 	{
 		this.parentId = parentId;
+	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("Category [id=").append(id).append(", name=").append(name).append(", parentId=").append(parentId).append("]");
+		return builder.toString();
 	}
 
 }

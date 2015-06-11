@@ -1,18 +1,21 @@
 package com.freddie.deserializers;
 
-import com.freddie.objects.Series;
-import com.google.gson.*;
-import org.apache.log4j.Logger;
-
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.apache.log4j.Logger;
+
+import com.freddie.objects.Series;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+
 public class SeriesDeserializer implements JsonDeserializer<Series>
 {
-
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	private static SimpleDateFormat timestampFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss-SS");
 	private static final Logger log = Logger.getLogger(SeriesDeserializer.class);
 
 	@Override
@@ -39,11 +42,13 @@ public class SeriesDeserializer implements JsonDeserializer<Series>
 					series.setSeasonalAdjustment(seriesObj.get("seasonal_adjustment").getAsString());
 					series.setSeasonalAdjustmentShort(seriesObj.get("seasonal_adjustment_short").getAsString());
 				}
-				catch(Exception e)
+				catch (Exception e)
 				{
 					log.error("Gson Parse Error" + e.getMessage());
 				}
 
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat timestampFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss-SS");
 
 				try
 				{

@@ -5,10 +5,6 @@ import java.util.Date;
 
 public class Release implements Serializable
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6077301204908146697L;
 
 	private Date realtimeStart;
@@ -91,4 +87,14 @@ public class Release implements Serializable
 	{
 		this.link = link;
 	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("Release [realtimeStart=").append(realtimeStart).append(", realtimeEnd=").append(realtimeEnd).append(", id=").append(id)
+				.append(", name=").append(name).append(", pressRelease=").append(pressRelease).append(", link=").append(link).append("]");
+		return builder.toString();
+	}
+
 }

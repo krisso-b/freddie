@@ -5,11 +5,8 @@ import java.util.Date;
 
 public class Observation implements Serializable
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7557216989167725505L;
+
 	public Date realtimeStart;
 	public Date realtimeEnd;
 	public Date date;
@@ -17,7 +14,6 @@ public class Observation implements Serializable
 
 	public Observation(Date realtimeStart, Date realtimeEnd, Date date, Double value)
 	{
-		super();
 		this.realtimeStart = realtimeStart;
 		this.realtimeEnd = realtimeEnd;
 		this.date = date;
@@ -63,4 +59,14 @@ public class Observation implements Serializable
 	{
 		this.value = value;
 	}
+
+	@Override
+	public String toString()
+	{
+		StringBuilder builder = new StringBuilder();
+		builder.append("Observation [realtimeStart=").append(realtimeStart).append(", realtimeEnd=").append(realtimeEnd).append(", date=").append(date)
+				.append(", value=").append(value).append("]");
+		return builder.toString();
+	}
+
 }

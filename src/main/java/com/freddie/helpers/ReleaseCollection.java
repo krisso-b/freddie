@@ -8,11 +8,8 @@ import com.freddie.objects.Release;
 
 public class ReleaseCollection implements Serializable
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3251027846769579054L;
+
 	private Date realtimeStart;
 	private Date realtimeEnd;
 	private String orderBy;
@@ -22,8 +19,8 @@ public class ReleaseCollection implements Serializable
 	private Integer limit;
 	private List<Release> releases;
 
-	public ReleaseCollection(Date realtimeStart, Date realtimeEnd, String orderBy, String sortOrder, Integer count,
-			Integer offset, Integer limit, List<Release> releases)
+	public ReleaseCollection(Date realtimeStart, Date realtimeEnd, String orderBy, String sortOrder, Integer count, Integer offset, Integer limit,
+			List<Release> releases)
 	{
 		super();
 		this.realtimeStart = realtimeStart;
@@ -115,6 +112,5 @@ public class ReleaseCollection implements Serializable
 	{
 		this.releases = releases;
 	}
-
 
 }

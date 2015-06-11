@@ -23,8 +23,7 @@ public class ObservationCollectionDeserializer implements JsonDeserializer<Obser
 	private static final Logger log = Logger.getLogger(ObservationCollectionDeserializer.class);
 
 	@Override
-	public ObservationCollection deserialize(JsonElement json, Type arg1, JsonDeserializationContext arg2)
-			throws JsonParseException
+	public ObservationCollection deserialize(JsonElement json, Type arg1, JsonDeserializationContext arg2) throws JsonParseException
 	{
 		JsonObject obj = (JsonObject) json;
 		JsonElement obsArray = obj.get("observations");
@@ -37,6 +36,7 @@ public class ObservationCollectionDeserializer implements JsonDeserializer<Obser
 		{
 			JsonObject objObs = (JsonObject) obs;
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
 			Date realtimeStart;
 			try
 			{
@@ -47,6 +47,7 @@ public class ObservationCollectionDeserializer implements JsonDeserializer<Obser
 				log.error("Gson Parse Error");
 				return null;
 			}
+
 			Date realtimeEnd;
 			try
 			{
@@ -57,6 +58,7 @@ public class ObservationCollectionDeserializer implements JsonDeserializer<Obser
 				log.error("Gson Parse Error");
 				return null;
 			}
+
 			Date date;
 			try
 			{
@@ -67,13 +69,13 @@ public class ObservationCollectionDeserializer implements JsonDeserializer<Obser
 				log.error("Gson Parse Error");
 				return null;
 			}
-			Double value = 0.0;
+
 			JsonElement element = objObs.get("value");
 			String elementValue = element.getAsString();
 
 			if (!".".equalsIgnoreCase(elementValue))
 			{
-				value = element.getAsDouble();
+				Double value = element.getAsDouble();
 				collection.addObservation(new Observation(realtimeStart, realtimeEnd, date, value));
 			}
 		}
