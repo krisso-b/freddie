@@ -49,8 +49,9 @@ public class Freddie
 
 	private static RestAdapter restAdapter = null;
 	private static IFredApiService service = null;
+
 	private final RateLimiter rateLimiter;
-	final static String ENDPOINT = "http://api.stlouisfed.org/fred/";
+	private static final String ENDPOINT = "http://api.stlouisfed.org/fred/";
 
 	public Freddie(String apiKey)
 	{
@@ -87,6 +88,7 @@ public class Freddie
 		{
 			this.endPoint = ENDPOINT;
 		}
+
 		restAdapter = new RestAdapter.Builder().setEndpoint(endPoint).setLogLevel(LogLevel.NONE).setConverter(new GsonConverter(gson)).build();
 		service = restAdapter.create(IFredApiService.class);
 	}
@@ -99,7 +101,9 @@ public class Freddie
 	public Series addObservations(Series series) throws Exception
 	{
 		if (series.getData() != null && !series.getData().isEmpty())
+		{
 			return series;
+		}
 
 		rateLimiter.acquire();
 		ObservationCollection observations;

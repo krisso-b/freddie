@@ -17,14 +17,18 @@ public interface IFredApiService
 	Series getSeries(@Query("series_id") String seriesName, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/series/observations")
-	ObservationCollection getObservations(@Query("series_id") String seriesName, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
+	ObservationCollection getObservations(@Query("series_id") String seriesName, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType/*-,
+																																							@Query("realtime_start") String realtimeStart,
+																																							@Query("realtime_end") String realtimeEnd*/);
 
 	@GET("/series/observations")
 	ObservationCollection getObservationsByFrequency(
 			@Query("series_id") String seriesName,
 			@Query("api_key") String apiKey,
 			@Query("frequency") String frequency,
-			@Query("file_type") String dataReturnType);
+			@Query("file_type") String dataReturnType/*-,
+														@Query("realtime_start") String realtimeStart,
+														@Query("realtime_end") String realtimeEnd*/);
 
 	@GET("/series/release")
 	Release getReleaseBySeriesId(@Query("series_id") String seriesId, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
