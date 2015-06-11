@@ -16,8 +16,7 @@ public class SeriesCollectionDeserializer implements JsonDeserializer<SeriesColl
 	private static final Logger log = Logger.getLogger(SeriesCollectionDeserializer.class);
 
 	@Override
-	public SeriesCollection deserialize(JsonElement json, Type type, JsonDeserializationContext context)
-			throws JsonParseException
+	public SeriesCollection deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException
 	{
 		SeriesCollection collection = new SeriesCollection();
 		JsonObject obj = (JsonObject) json;
@@ -40,11 +39,10 @@ public class SeriesCollectionDeserializer implements JsonDeserializer<SeriesColl
 				series.setSeasonalAdjustment(seriesObj.get("seasonal_adjustment").getAsString());
 				series.setSeasonalAdjustmentShort(seriesObj.get("seasonal_adjustment_short").getAsString());
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				log.error("Gson Parse Error" + e.getMessage());
 			}
-
 
 
 			try

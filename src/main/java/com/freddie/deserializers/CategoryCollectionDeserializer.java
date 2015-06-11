@@ -10,8 +10,7 @@ public class CategoryCollectionDeserializer implements JsonDeserializer<Category
 {
 
 	@Override
-	public CategoryCollection deserialize(JsonElement json, Type type, JsonDeserializationContext context)
-			throws JsonParseException
+	public CategoryCollection deserialize(JsonElement json, Type type, JsonDeserializationContext context) throws JsonParseException
 	{
 		CategoryCollection collection = new CategoryCollection();
 		JsonObject obj = (JsonObject) json;
@@ -20,8 +19,7 @@ public class CategoryCollectionDeserializer implements JsonDeserializer<Category
 		for (JsonElement c : obsArray)
 		{
 			JsonObject o = (JsonObject) c;
-			collection.addCategory(new Category(o.get("id").getAsInt(), o.get("name").getAsString(), o.get("parent_id")
-					.getAsInt()));
+			collection.addCategory(new Category(o.get("id").getAsInt(), o.get("name").getAsString(), o.get("parent_id").getAsInt()));
 		}
 		return collection;
 	}

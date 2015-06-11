@@ -14,16 +14,10 @@ public interface IFredApiService
 {
 
 	@GET("/series")
-	Series getSeries(
-			@Query("series_id") String seriesName,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	Series getSeries(@Query("series_id") String seriesName, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/series/observations")
-	ObservationCollection getObservations(
-			@Query("series_id") String seriesName,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	ObservationCollection getObservations(@Query("series_id") String seriesName, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/series/observations")
 	ObservationCollection getObservationsByFrequency(
@@ -33,38 +27,20 @@ public interface IFredApiService
 			@Query("file_type") String dataReturnType);
 
 	@GET("/series/release")
-	Release getReleaseBySeriesId(
-			@Query("series_id") String seriesId,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	Release getReleaseBySeriesId(@Query("series_id") String seriesId, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/category")
-	Category getCategoryById(
-			@Query("category_id") int categoryId,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	Category getCategoryById(@Query("category_id") int categoryId, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/category/children")
-	CategoryCollection getCategoryChildren(
-			@Query("category_id") int categoryId,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	CategoryCollection getCategoryChildren(@Query("category_id") int categoryId, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/release")
-	Release getReleaseById(
-			@Query("release_id") int releaseId,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	Release getReleaseById(@Query("release_id") int releaseId, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/release/series")
-	SeriesCollection getSeriesByReleaseId(
-			@Query("release_id") int releaseId,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	SeriesCollection getSeriesByReleaseId(@Query("release_id") int releaseId, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 
 	@GET("/category/series")
-	SeriesCollection getSeriesByCategoryId(
-			@Query("category_id") int categoryId,
-			@Query("api_key") String apiKey,
-			@Query("file_type") String dataReturnType);
+	SeriesCollection getSeriesByCategoryId(@Query("category_id") int categoryId, @Query("api_key") String apiKey, @Query("file_type") String dataReturnType);
 }

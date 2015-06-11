@@ -40,14 +40,12 @@ public class Freddie
 	private String apiKey;
 	private String endPoint;
 	final static String RETURNTYPE = "json";
-	private static Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-			.setDateFormat("yyyy-MM-dd")
+	private static Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setDateFormat("yyyy-MM-dd")
 			.registerTypeAdapter(ObservationCollection.class, new ObservationCollectionDeserializer())
-			.registerTypeAdapter(Series.class, new SeriesDeserializer())
-			.registerTypeAdapter(Category.class, new CategoryDeserializer())
+			.registerTypeAdapter(Series.class, new SeriesDeserializer()).registerTypeAdapter(Category.class, new CategoryDeserializer())
 			.registerTypeAdapter(CategoryCollection.class, new CategoryCollectionDeserializer())
-			.registerTypeAdapter(SeriesCollection.class, new SeriesCollectionDeserializer())
-			.registerTypeAdapter(Release.class, new ReleaseDeserializer()).create();
+			.registerTypeAdapter(SeriesCollection.class, new SeriesCollectionDeserializer()).registerTypeAdapter(Release.class, new ReleaseDeserializer())
+			.create();
 
 	private static RestAdapter restAdapter = null;
 	private static IFredApiService service = null;
@@ -89,9 +87,7 @@ public class Freddie
 		{
 			this.endPoint = ENDPOINT;
 		}
-		restAdapter =
-				new RestAdapter.Builder().setEndpoint(endPoint).setLogLevel(LogLevel.NONE).setConverter(new GsonConverter(gson))
-						.build();
+		restAdapter = new RestAdapter.Builder().setEndpoint(endPoint).setLogLevel(LogLevel.NONE).setConverter(new GsonConverter(gson)).build();
 		service = restAdapter.create(IFredApiService.class);
 	}
 
